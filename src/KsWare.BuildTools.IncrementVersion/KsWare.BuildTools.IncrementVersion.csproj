@@ -22,9 +22,11 @@
 		<ToolCommandName>KsWare.BuildTools.IncrementVersion</ToolCommandName>
 		<Version>$(VersionPrefix)</Version>
 		<PackageLicenseExpression> LGPL-3.0-only</PackageLicenseExpression>
-		<PackageReleaseNotes>- FIX for duplicate entries in project file
+		<PackageReleaseNotes>- log exceptions to IncrementVersion.log
+- FIX for duplicate entries in project file
 - add feature PackageReleaseNotes
-- unify unique project/tool name "KsWare.BuildTools.IncrementVersion"</PackageReleaseNotes>
+- unify unique project/tool name "KsWare.BuildTools.IncrementVersion"
+- first version on nuget.org</PackageReleaseNotes>
 		<PackageProjectUrl>https://github.com/KsWare/KsWare.BuildTools.IncrementVersion</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/KsWare/KsWare.BuildTools.IncrementVersion</RepositoryUrl>
 			<!-- <PackageType>DotnetTool</PackageType> -->

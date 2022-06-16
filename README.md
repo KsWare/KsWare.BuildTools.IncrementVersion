@@ -1,10 +1,8 @@
 ﻿# KsWare.BuildTools.IncrementVersion
 
-A tool which increments the build number bevor build.
+A tool which increments the build number before build.
 
-With this tool you can apply [semantic versioning](https://semver.org/lang/de/).
-
-The idea behind is to define the Major/Minor version on demand in a centrazied location and increment the Build number on each (release) build without the need to change each version property in each project.
+The idea behind is to define the Major/Minor version on demand in a centralized location and increment the Build number on each (release) build without the need to change each version property in each project.
 
 Because you (should) use always a change log file, we use this to define the version number. 
 
@@ -24,10 +22,10 @@ After [installing](#installation) as a global tool you can add a build target
 
 ```xml
 <Target Name="IncrementVersion" BeforeTargets="PrepareForBuild" Condition="$(Configuration)=='Release'">
-    <Exec Command="KsWare.BuildTools.IncrementVersion $(ProjectPath) -f $(SolutionDir)..\ChangeLog.md" />
+    <Exec Command="KsWare.BuildTools.IncrementVersion.exe $(ProjectPath) -f $(SolutionDir)..\ChangeLog.md" />
 </Target>
 ```
-Exec Command: `KsWare.BuildTools.IncrementVersion <project> [-f <path>][-t]`
+Exec Command: `KsWare.BuildTools.IncrementVersion.exe <project> [-f <path>][-t]`
 
 | Parameter | Description
 |:--|:---|
@@ -75,13 +73,13 @@ To setup a new major/minor version, simple add the version on top, like in the f
 
 ## Installation
 
-Install from NuGet.org
+Installation from [NuGet.org](https://www.nuget.org/packages/KsWare.BuildTools.IncrementVersion/)
 
 ```CLI
 dotnet tool install KsWare.BuildTools.IncrementVersion -g
 ```
 
-Install from local directory
+Installation from local directory
 
 ```CLI
 dotnet tool install KsWare.BuildTools.IncrementVersion -g --add-source .
@@ -101,7 +99,7 @@ MAUI Properties are using other version properties.
 
  - `ApplicationDisplayVersion` contains the version number like '1.0.1' and is processed as usual like the `VersionPrefix`. 
 
- - `ApplicationVersion` is a integer. This is also incremented with each release build.
+ - `ApplicationVersion` is an integer. This is also incremented with each release build.
 
  ## Additional usage
 
@@ -118,3 +116,11 @@ MAUI Properties are using other version properties.
 # Naming
 For reasons of uniqueness and to avoid naming conflicts with other tools I finally decided to use the full name `KsWare.BuildTools.IncrementVersion` also for the tool name and for the binary file.
 As a short name I will remember `KsIncVer` but maybe I can think of a better one.
+
+# Limitations/Drawbacks
+ - curently only one version format "Major.Minor.Build"
+ - you need one changelog per project and not one per solution
+ - [semantic versioning](https://semver.org/lang/de/) not completey used
+
+# Planned features
+ - reduce limitations/drawbacks of course 😉
