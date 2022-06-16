@@ -1,4 +1,4 @@
-# VersionIncrement
+﻿# KsWare.BuildTools.IncrementVersion
 
 A tool which increments the build number bevor build.
 
@@ -14,6 +14,8 @@ See also [Identify the project format](https://docs.microsoft.com/en-us/nuget/re
 Currently it is provided to works with single project solutions, or more precisely, with one change log file per project. 
 This means you cannot increment multiple projects with only one ChangeLog file.
 
+And Yes, IncrementVersion uses IncrementVersion to increment the version. 😆
+
 ## Usage
 
 ### 1. Adapt project file
@@ -21,11 +23,11 @@ This means you cannot increment multiple projects with only one ChangeLog file.
 After [installing](#installation) as a global tool you can add a build target
 
 ```xml
-<Target Name="VersionIncrement" BeforeTargets="PrepareForBuild" Condition="$(Configuration)=='Release'">
-	<Exec Command="IncrementVersion $(ProjectPath) -f $(SolutionDir)..\ChangeLog.md" />
+<Target Name="IncrementVersion" BeforeTargets="PrepareForBuild" Condition="$(Configuration)=='Release'">
+    <Exec Command="KsWare.BuildTools.IncrementVersion $(ProjectPath) -f $(SolutionDir)..\ChangeLog.md" />
 </Target>
 ```
-Exec Command: `IncrementVersion <project> [-f <path>][-t]`
+Exec Command: `KsWare.BuildTools.IncrementVersion <project> [-f <path>][-t]`
 
 | Parameter | Description
 |:--|:---|
@@ -40,7 +42,7 @@ Properties containing macros will not be changed.
 
 ### 2. The ChangeLog file
  - Create a simple Changelog.md file.  
- - Check if the  `-f path` in the VersionIncrement target points to this file!  
+ - Check if the  `-f path` in the target points to this file!  
  - Specify the major/minor version on top of file.
 
 ```
@@ -105,10 +107,14 @@ MAUI Properties are using other version properties.
 
  You can use this tool per CLI also without a change log file.
 
- `VersionIncrement.exe <project> [-v <version>][-t]`
+ `KsWare.BuildTools.IncrementVersion.exe <project> [-v <version>][-t]`
 
  | Parameter | Description
 |:--|:---|
 | \<project>    | path to the project file
 | -v \<version>   | the desired version (major/minor)
 | -t or -test  | No changes will be writen. Use this for test purposes.
+
+# Naming
+For reasons of uniqueness and to avoid naming conflicts with other tools I finally decided to use the full name `KsWare.BuildTools.IncrementVersion` also for the tool name and for the binary file.
+As a short name I will remember `KsIncVer` but maybe I can think of a better one.

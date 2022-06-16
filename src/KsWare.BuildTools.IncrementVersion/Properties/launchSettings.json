@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "IncrementVersion": {
+      "commandName": "Project",
+      "commandLineArgs": "KsWare.BuildTools.IncrementVersion.csproj -f ..\\..\\ChangeLog.md -t",
+      "workingDirectory": "$(ProjectDir)"
+    }
+  }
+}

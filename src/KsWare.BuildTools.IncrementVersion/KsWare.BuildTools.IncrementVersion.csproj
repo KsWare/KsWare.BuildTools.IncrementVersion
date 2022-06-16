@@ -11,7 +11,7 @@
 		<Company>KsWare</Company>
 		<Product>KsWare.BuildTools.IncrementVersion</Product>
 		<Description>A tool for build process which increments the build number</Description>
-		<VersionPrefix>0.2.0</VersionPrefix>
+		<VersionPrefix>0.3.0</VersionPrefix>
 		<Copyright>Copyright © 2002-2022 by KsWare. All rights reserved.</Copyright>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -19,9 +19,14 @@
 		<AssemblyVersion>$(VersionPrefix).0</AssemblyVersion>
 		<FileVersion>$(VersionPrefix).0</FileVersion>
 		<PackAsTool>true</PackAsTool>
-		<ToolCommandName>IncrementVersion</ToolCommandName>
+		<ToolCommandName>KsWare.BuildTools.IncrementVersion</ToolCommandName>
 		<Version>$(VersionPrefix)</Version>
 		<PackageLicenseExpression> LGPL-3.0-only</PackageLicenseExpression>
+		<PackageReleaseNotes>- FIX for duplicate entries in project file
+- add feature PackageReleaseNotes
+- unify unique project/tool name "KsWare.BuildTools.IncrementVersion"</PackageReleaseNotes>
+		<PackageProjectUrl>https://github.com/KsWare/KsWare.BuildTools.IncrementVersion</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/KsWare/KsWare.BuildTools.IncrementVersion</RepositoryUrl>
 			<!-- <PackageType>DotnetTool</PackageType> -->
 	</PropertyGroup>
 
@@ -36,13 +41,9 @@
 		</None>
 	</ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="NuGet.Versioning" Version="6.2.1" />
-	</ItemGroup>
-
 	<!-- PreBuildEvent, PrepareForBuild-->
-	<Target Name="VersionIncrement" BeforeTargets="PrepareForBuild" Condition="$(Configuration)=='Release'">
-		<Exec Command="bin\Debug\net6.0\VersionIncrement $(ProjectPath) -f $(SolutionDir)..\ChangeLog.md" />
+	<Target Name="IncrementVersion" BeforeTargets="PrepareForBuild" Condition="$(Configuration)=='Release'">
+		<Exec Command="bin\Debug\net6.0\KsWare.BuildTools.IncrementVersion.exe $(ProjectPath) -f $(SolutionDir)..\ChangeLog.md" />
 	</Target>
 
 </Project>
