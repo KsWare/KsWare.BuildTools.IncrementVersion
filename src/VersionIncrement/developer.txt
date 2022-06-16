@@ -1,0 +1,4 @@
+﻿https://docs.microsoft.com/de-de/dotnet/core/tools/global-tools-how-to-create
+
+dotnet tool install KsWare.BuildTools.IncrementVersion -g --add-source .
+dotnet tool update KsWare.BuildTools.IncrementVersion -g --add-source .

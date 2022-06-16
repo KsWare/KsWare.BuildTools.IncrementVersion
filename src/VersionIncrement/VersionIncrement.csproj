@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageId>KsWare.BuildTools.IncrementVersion</PackageId>
+		<Authors>KsWare</Authors>
+		<Company>KsWare</Company>
+		<Product>KsWare.BuildTools.IncrementVersion</Product>
+		<Description>A tool for build process which increments the build number</Description>
+		<VersionPrefix>0.2.0</VersionPrefix>
+		<Copyright>Copyright © 2002-2022 by KsWare. All rights reserved.</Copyright>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageTags>build version increment</PackageTags>
+		<AssemblyVersion>$(VersionPrefix).0</AssemblyVersion>
+		<FileVersion>$(VersionPrefix).0</FileVersion>
+		<PackAsTool>true</PackAsTool>
+		<ToolCommandName>IncrementVersion</ToolCommandName>
+		<Version>$(VersionPrefix)</Version>
+		<PackageLicenseExpression> LGPL-3.0-only</PackageLicenseExpression>
+			<!-- <PackageType>DotnetTool</PackageType> -->
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\icon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="NuGet.Versioning" Version="6.2.1" />
+	</ItemGroup>
+
+	<!-- PreBuildEvent, PrepareForBuild-->
+	<Target Name="VersionIncrement" BeforeTargets="PrepareForBuild" Condition="$(Configuration)=='Release'">
+		<Exec Command="bin\Debug\net6.0\VersionIncrement $(ProjectPath) -f $(SolutionDir)..\ChangeLog.md" />
+	</Target>
+
+</Project>
