@@ -18,13 +18,21 @@ This means you cannot increment multiple projects with only one ChangeLog file.
 
 ### 1. Adapt project file
 
-After [insallalling](#installation) as a global tool you can add a build target
+After [installing](#installation) as a global tool you can add a build target
 
 ```xml
 <Target Name="VersionIncrement" BeforeTargets="PrepareForBuild" Condition="$(Configuration)=='Release'">
 	<Exec Command="IncrementVersion $(ProjectPath) -f $(SolutionDir)..\ChangeLog.md" />
 </Target>
 ```
+Exec Command: `IncrementVersion <project> [-f <path>][-t]`
+
+| Parameter | Description
+|:--|:---|
+| \<project>    | path to the project file
+| -f \<path>   | path to file which contains the version
+| -t or -test  | No changes will be writen. Use this for test purposes.
+
 Don't forget to add/configure any of the version properties in your project file. 
 I suggest to use `VersionPrefix`. 
 Only properties that are present are changed! 
@@ -60,17 +68,8 @@ To setup a new major/minor version, simple add the version on top, like in the f
 # 1.0.1
 ...
 ```
-
-### CLI
-
-`VersionIncrement.exe <project> [-f <path>[-t]`
-
 #### Options
-| Parameter | Description
-|:--|:---|
-| \<project>    | path to the project file
-| -f \<path>   | path to file which contains the version
-| -t or -test  | No changes will be writen. Use this for test purposes.
+
 
 ## Installation
 
