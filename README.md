@@ -4,14 +4,14 @@ A tool which increments the build number bevor build.
 
 With this tool you can apply [semantic versioning](https://semver.org/lang/de/).
 
-The idea behind is to define the Major/Minor version on demad in one location and increment the Build number on each (release) build without the need to change each version property in each project.
+The idea behind is to define the Major/Minor version on demand in a centrazied location and increment the Build number on each (release) build without the need to change each version property in each project.
 
-Because you (should) use always a ChangeLog file, we use this to define the version number. 
+Because you (should) use always a change log file, we use this to define the version number. 
 
 Supports projects with the SDK format, including [MAUI projects](#MAUI-projects).  
 See also [Identify the project format](https://docs.microsoft.com/en-us/nuget/resources/check-project-format).
 
-Currently it is provided to works with single project solutions, or more precisely, with one ChangeLog file per project. 
+Currently it is provided to works with single project solutions, or more precisely, with one change log file per project. 
 This means you cannot increment multiple projects with only one ChangeLog file.
 
 ## Usage
